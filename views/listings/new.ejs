@@ -1,0 +1,362 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h3 class="new-heading">
+        <i class="fa-solid fa-house me-2"></i>Share Your Home with Renters
+      </h3>
+      <form
+        method="POST"
+        action="/listings"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
+        <br />
+
+        <div class="row g-3 border rounded p-3 mb-3">
+          <div class="mb-3">
+            <label for="title" class="form-lable">Title</label>
+            <input
+              type="text"
+              name="listing[title]"
+              placeholder="e.g. Cozy Beachside Villa"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">
+              Please enter a title for your listing.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-lable">Description</label>
+            <textarea
+              name="listing[description]"
+              placeholder="Describe your property, amenities and unique features"
+              class="form-control"
+              required
+            ></textarea>
+            <div class="invalid-feedback">
+              Please provide a brief description of your property.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-lable"
+              >Upload property image (Optional)</label
+            >
+            <input type="file" name="listing[image]" class="form-control" />
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="price" class="form-lable">Price per month</label>
+              <input
+                type="number"
+                name="listing[price]"
+                placeholder="e.g. ₹2500"
+                class="form-control"
+                min="0"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter a valid price (e.g. ₹2500).
+              </div>
+            </div>
+
+            <!-- Owner Contact Number -->
+            <div class="mb-3">
+              <label for="phoneNumber" class="form-lable"
+                >Owner Contact Number</label
+              >
+              <input
+                type="tel"
+                name="listing[phoneNumber]"
+                placeholder="e.g. 9876......"
+                class="form-control"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter the contact number of the owner.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="ownerName" class="form-lable">Owner Name</label>
+              <input
+                type="text"
+                name="listing[ownerName]"
+                placeholder="e.g. John Doe"
+                class="form-control"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter the name of the owner.
+              </div>
+            </div>
+
+            <div class="mb-3 col-md-8">
+              <label for="country" class="form-lable">Country</label>
+              <input
+                type="text"
+                name="listing[country]"
+                placeholder="e.g. India"
+                class="form-control"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter the country where your property is located.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="location" class="form-lable">Location</label>
+              <input
+                type="text"
+                name="listing[location]"
+                placeholder="Enter city, state or full address"
+                class="form-control"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter the city or full address of your property.
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="mb-3">
+              <label for="address" class="form-lable">Address</label>
+              <input
+                type="text"
+                name="listing[address]"
+                placeholder="Full property address"
+                class="form-control"
+                required
+              />
+              <div class="invalid-feedback">Please enter the full address.</div>
+            </div>
+
+            <!-- Property Type -->
+            <div class="mb-3">
+              <label for="propertyType" class="form-lable">Property Type</label>
+              <input
+                type="text"
+                name="listing[propertyType]"
+                placeholder="e.g. Apartment, Villa, Studio"
+                class="form-control"
+                required
+              />
+              <div class="invalid-feedback">
+                Please specify the property type.
+              </div>
+            </div>
+
+            <!-- Bedrooms & Bathrooms -->
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="bedrooms" class="form-lable">Bedrooms</label>
+                <input
+                  type="number"
+                  name="listing[bedrooms]"
+                  placeholder="e.g. 2"
+                  class="form-control"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="mb-3 col-md-6">
+                <label for="bathrooms" class="form-lable">Bathrooms</label>
+                <input
+                  type="number"
+                  name="listing[bathrooms]"
+                  placeholder="e.g. 1"
+                  class="form-control"
+                  min="1"
+                />
+              </div>
+            </div>
+
+            <!-- Area -->
+            <div class="mb-3">
+              <label for="area" class="form-lable">Area (sq.ft)</label>
+              <input
+                type="number"
+                name="listing[area]"
+                placeholder="e.g. 1200"
+                class="form-control"
+                min="0"
+              />
+            </div>
+
+            <!-- Amenities -->
+            <div class="mb-3">
+              <label for="amenities" class="form-lable">Amenities</label>
+              <input
+                type="text"
+                name="listing[amenities]"
+                placeholder="e.g. WiFi, Parking, AC"
+                class="form-control"
+              />
+              <small class="text-muted"
+                >Enter multiple amenities separated by commas</small
+              >
+            </div>
+
+            <!-- Furnished -->
+            <div class="mb-3">
+              <label for="furnished" class="form-lable">Furnished</label>
+              <select name="listing[furnished]" class="form-select">
+                <option value="Unfurnished">Unfurnished</option>
+                <option value="Semi">Semi</option>
+                <option value="Fully">Fully Furnished</option>
+              </select>
+            </div>
+
+            <!-- Availability -->
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="listing[isAvailable]"
+                checked
+              />
+              <label class="form-check-lable">Available for booking</label>
+            </div>
+          </div>
+        </div>
+
+        <br /><br />
+
+        <!-- Nearby Essentials Section -->
+        <h5 class="mt-4">Nearby Essentials 🚉✈️</h5>
+        <p class="text-muted">Provide essential locations near your property</p>
+
+        <div class="row g-3 border rounded p-3 mb-3">
+          <!-- Airport -->
+          <div class="col-md-6">
+            <label class="form-label">Nearest Airport</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][airport][name]"
+              placeholder="Airport Name"
+              class="form-control mb-2"
+              required
+            />
+            <input
+              type="text"
+              name="listing[nearbyEssentials][airport][distance]"
+              placeholder="Distance (e.g. 12 km)"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <!-- Railway Station -->
+          <div class="col-md-6">
+            <label class="form-label">Nearest Railway Station</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][railwayStation][name]"
+              placeholder="Station Name"
+              class="form-control mb-2"
+              required
+            />
+            <input
+              type="text"
+              name="listing[nearbyEssentials][railwayStation][distance]"
+              placeholder="Distance (e.g. 5 km)"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <!-- Bus Stand -->
+          <div class="col-md-6">
+            <label class="form-label">Nearest Bus Stand</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][busStand][name]"
+              placeholder="Bus Stand Name"
+              class="form-control mb-2"
+              required
+            />
+            <input
+              type="text"
+              name="listing[nearbyEssentials][busStand][distance]"
+              placeholder="Distance (e.g. 3 km)"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <!-- City Center -->
+          <div class="col-md-6">
+            <label class="form-label">City Center / Market</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][cityCenter][name]"
+              placeholder="City Center / Market Name"
+              class="form-control mb-2"
+              required
+            />
+            <input
+              type="text"
+              name="listing[nearbyEssentials][cityCenter][distance]"
+              placeholder="Distance (e.g. 4 km)"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+
+        <br /><br />
+
+        <!-- Nearby Places Section -->
+        <h5 class="mt-4">Nearby Places to Visit 🌄</h5>
+        <p class="text-muted">
+          Share details of cool places or attractions near your property
+        </p>
+
+        <div class="row g-3 border rounded p-3 mb-3">
+          <!-- Name -->
+          <div class="col-md-4">
+            <label for="nearbyName" class="form-label">Place Name</label>
+            <input
+              type="text"
+              name="listing[nearbyPlaces][name]"
+              placeholder="e.g. Sunset Lake View"
+              class="form-control"
+            />
+          </div>
+
+          <!-- Distance -->
+          <div class="col-md-4">
+            <label class="form-label">Distance</label>
+            <input
+              type="text"
+              name="listing[nearbyPlaces][distance]"
+              placeholder="e.g. 2 km"
+              class="form-control"
+            />
+          </div>
+
+          <!-- Short Description -->
+          <div class="col-12">
+            <label class="form-label">Short Description</label>
+            <textarea
+              name="listing[nearbyPlaces][description]"
+              placeholder="e.g. A beautiful lake ideal for boating and photography (max 80 characters)"
+              class="form-control"
+              rows="2"
+              maxlength="80"
+            ></textarea>
+          </div>
+        </div>
+
+        <button class="btn btn-dark add-button">Share My Home</button>
+      </form>
+    </div>
+  </div>
+</body>

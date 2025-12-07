@@ -1,0 +1,87 @@
+<nav
+  class="navbar navbar-expand-md bg-body-light border-bottom mb-4 sticky-top"
+>
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <span class="logo-name" style="margin-left: 0">StayNest</span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <!-- Search Bar with Suggestions -->
+      <form
+        action="/listings/search"
+        method="GET"
+        class="ms-auto position-relative"
+        style="width: 100%; max-width: 400px"
+      >
+        <div
+          class="input-group"
+          style="
+            border: 2px solid rgb(160, 160, 169);
+            border-radius: 25px;
+            overflow: hidden;
+          "
+        >
+          <input
+            type="search"
+            class="form-control"
+            name="location"
+            id="searchInput"
+            placeholder="Search by location"
+            autocomplete="off"
+            style="border: none; box-shadow: none"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="submit"
+            style="border: none"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <!-- Suggestions Dropdown -->
+        <div
+          id="suggestions"
+          class="list-group position-absolute w-100"
+          style="top: 100%; left: 0; z-index: 1000"
+        ></div>
+      </form>
+
+      <!-- Sign up, login, become host -->
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/Listings/New" style="font-weight: 600">
+          Become a host
+        </a>
+
+        <% if(!currentUser) { %>
+        <a class="nav-link" href="/signup"><b>Sign up</b></a>
+        <a class="nav-link" href="/login"><b>Log in</b></a>
+        <% } %> <% if(currentUser) { %>
+        <a class="nav-link" href="/logout">Log out</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Client-side JS for live search suggestions -->
+<script src="js/searchSuggestion.js"></script>
+
+<style>
+  #suggestions a:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+</style>

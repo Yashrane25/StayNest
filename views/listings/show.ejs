@@ -1,0 +1,368 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+  <div class="container my-0">
+    <h3 class="mb-2" style="font-family: 'Inter', sans-serif">
+      <b><%= listing.title %></b>
+    </h3>
+
+    <!-- Image + Nearby Info Side by Side -->
+    <div class="row g-3 align-items-stretch">
+      <!-- Main Image -->
+      <div class="col-md-8">
+        <div class="card shadow-sm rounded">
+          <img
+            src="<%= listing.image.url %>"
+            class="img-fluid rounded"
+            alt="Main Image"
+            style="height: 480px; width: 100%; object-fit: cover"
+          />
+        </div>
+      </div>
+
+      <!-- Combined Nearby Essentials + Places Box -->
+      <div class="col-md-4 d-flex flex-column gap-2" style="height: 480px">
+        <!-- Nearby Essentials Section -->
+        <div class="card flex-fill shadow-sm" style="height: 300px">
+          <div
+            class="card-header text-white d-flex align-items-center"
+            style="background-color: #1c619e; color: white"
+          >
+            <span class="me-2">
+              <i class="fa-solid fa-train"></i>
+              <i class="fa-solid fa-plane ms-1"></i>
+            </span>
+            <h6 class="mb-0">Nearby Essentials</h6>
+          </div>
+          <div class="card-body ps-1 mt-1" style="overflow: hidden">
+            <% if (listing.nearbyEssentials) { %> <% if
+            (listing.nearbyEssentials.airport?.name) { %>
+            <p class="mb-0 text-truncate">
+              <strong>Airport:</strong> <%=
+              listing.nearbyEssentials.airport.name %>
+            </p>
+            <p class="text-muted mb-1 text-truncate">
+              <small
+                >Distance: <%= listing.nearbyEssentials.airport.distance%>
+                <span>km</span>
+              </small>
+            </p>
+            <% } %> <% if (listing.nearbyEssentials.railwayStation?.name) { %>
+            <p class="mb-0 text-truncate">
+              <strong>Railway Station:</strong> <%=
+              listing.nearbyEssentials.railwayStation.name %>
+            </p>
+            <p class="text-muted mb-1 text-truncate">
+              <small
+                >Distance: <%= listing.nearbyEssentials.railwayStation.distance
+                %> <span>km</span>
+              </small>
+            </p>
+            <% } %> <% if (listing.nearbyEssentials.busStand?.name) { %>
+            <p class="mb-0 text-truncate">
+              <strong>Bus Stand:</strong> <%=
+              listing.nearbyEssentials.busStand.name %>
+            </p>
+            <p class="text-muted mb-1 text-truncate">
+              <small
+                >Distance: <%= listing.nearbyEssentials.busStand.distance %>
+                <span>km</span>
+              </small>
+            </p>
+            <% } %> <% if (listing.nearbyEssentials.cityCenter?.name) { %>
+            <p class="mb-0 text-truncate">
+              <strong>City Center:</strong> <%=
+              listing.nearbyEssentials.cityCenter.name %>
+            </p>
+            <p class="text-muted mb-2 text-truncate">
+              <small
+                >Distance: <%= listing.nearbyEssentials.cityCenter.distance %>
+                <span>km</span>
+              </small>
+            </p>
+            <% } %> <% } else { %>
+            <p class="text-muted mb-0">No nearby essentials info available.</p>
+            <% } %>
+          </div>
+        </div>
+
+        <!-- Nearby Places Section -->
+        <div class="card flex-fill shadow-sm">
+          <div
+            class="card-header text-white d-flex align-items-center"
+            style="background-color: #1c619e; color: white"
+          >
+            <span class="me-2"><i class="fa-solid fa-mountain-sun"></i></span>
+            <h6 class="mb-0">Nearby Places to Visit</h6>
+          </div>
+          <div class="card-body ps-1 mt-1">
+            <% if (listing.nearbyPlaces?.name) { %>
+            <p class="mb-1">
+              <strong>Name:</strong> <%= listing.nearbyPlaces.name %>
+            </p>
+            <% if (listing.nearbyPlaces.distance) { %>
+            <p class="mb-1">
+              <strong>Distance:</strong> <%= listing.nearbyPlaces.distance %>
+            </p>
+            <% } %> <% if (listing.nearbyPlaces.description) { %>
+            <p class="mb-1">
+              <strong>Description:</strong> <%= listing.nearbyPlaces.description
+              %>
+            </p>
+            <% } %> <% if (listing.nearbyPlaces.image) { %>
+            <img
+              src="<%= listing.nearbyPlaces.image %>"
+              class="img-fluid rounded mt-2 shadow-sm"
+              alt="Nearby Place Image"
+            />
+            <% } %> <% } else { %>
+            <p class="text-muted mb-0">No nearby places info available.</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Listing Details -->
+    <div class="card mt-0 p-4 shadow-sm border-0 rounded-4">
+      <div class="card-body">
+        <!-- Header -->
+        <div class="mb-3">
+          <h3 class="fw-bold mb-1"><%= listing.title %></h3>
+          <p class="text-muted">
+            Hosted by <b><%= listing.owner.username %></b>
+          </p>
+        </div>
+
+        <!-- Pricing Highlight -->
+        <div
+          class="bg-light p-3 rounded mb-3 d-flex align-items-center justify-content-between"
+        >
+          <div>
+            <h4 class="text-success fw-bold mb-0">
+              ₹ <%= listing.price.toLocaleString("en-IN") %>
+            </h4>
+            <small class="text-muted">per month</small>
+          </div>
+        </div>
+
+        <!-- Property Summary Badges -->
+        <div class="d-flex gap-3 flex-wrap mb-3">
+          <span class="badge bg-secondary-subtle text-dark px-3 py-2">
+            <i class="fa-solid fa-house"></i> <%= listing.propertyType %>
+          </span>
+          <span class="badge bg-secondary-subtle text-dark px-3 py-2">
+            <i class="fa-solid fa-bed"></i> <%= listing.bedrooms %> Bedrooms
+          </span>
+          <span class="badge bg-secondary-subtle text-dark px-3 py-2">
+            <i class="fa-solid fa-bath"></i> <%= listing.bathrooms %> Bathrooms
+          </span>
+          <% if (listing.area) { %>
+          <span class="badge bg-secondary-subtle text-dark px-3 py-2">
+            <%= listing.area %> sq.ft
+          </span>
+          <% } %>
+        </div>
+
+        <!-- Details Grid -->
+        <hr />
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <h6 class="fw-bold">Location</h6>
+            <p>
+              <i class="fa-solid fa-location-dot text-danger"></i>
+              <%= listing.location %>, <%= listing.country %>
+            </p>
+            <p>
+              <span class="fw-semibold"> Address:</span> <%= listing.address %>
+            </p>
+          </div>
+
+          <div class="col-md-6">
+            <h6 class="fw-bold">Property Status</h6>
+            <p>
+              <span class="fw-semibold">Furnished:</span> <%= listing.furnished
+              %><br />
+              <span class="fw-semibold">Availability:</span>
+              <% if (listing.isAvailable) { %>
+              <span class="text-success">Available</span>
+              <% } else { %>
+              <span class="text-danger">Not Available</span>
+              <% } %>
+            </p>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <hr />
+        <h6 class="fw-bold">Description</h6>
+        <p><%= listing.description %></p>
+
+        <!-- Amenities Section -->
+        <% if (listing.amenities && listing.amenities.length > 0) { %>
+        <hr />
+        <h6 class="fw-bold">Amenities</h6>
+        <div class="d-flex flex-wrap gap-2">
+          <% listing.amenities.split(",").forEach(amenity => { %>
+          <span class="badge bg-dark text-light px-3 py-2 rounded-pill">
+            <i class="fa-solid fa-circle-check"></i> <%= amenity.trim() %>
+          </span>
+          <% }); %>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Owner Details Section -->
+    <div class="card mb-4 shadow-sm border-0 p-3">
+      <h5 class="mb-3 fw-bold">Owner Details</h5>
+
+      <!-- Owner Name -->
+      <div class="mb-3 d-flex align-items-center">
+        <label class="form-label fw-semibold me-2 mb-0">Name:</label>
+        <span class="mb-0"><%= listing.ownerName || "Not available" %></span>
+      </div>
+
+      <!-- Owner Phone Number -->
+      <div class="mb-3 d-flex align-items-center">
+        <label class="form-label fw-semibold me-2 mb-0">Contact:</label>
+        <span><%= listing.phoneNumber || "Not available" %></span>
+      </div>
+    </div>
+
+    <!-- Delete and Edit -->
+    <% if(currentUser && currentUser._id.equals(listing.owner._id)) { %>
+    <div class="d-flex gap-3 mt-3">
+      <a href="/listings/<%= listing._id %>/edit" class="btn show-edit-btn"
+        >Edit
+      </a>
+      <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+        <button class="btn delete-btn">Delete</button>
+      </form>
+    </div>
+    <% } %>
+
+    <hr />
+    <br />
+
+    <!-- Reviews Section -->
+    <div class="reviews-container">
+      <div class="review-section">
+        <h4><b>Add Review</b></h4>
+        <form
+          action="/listings/<%= listing._id %>/reviews"
+          method="POST"
+          novalidate
+          class="needs-validation"
+        >
+          <div class="mb-3 mt-3">
+            <label for="rating" class="form-label">Rating (out of 5)</label>
+            <fieldset class="starability-slot">
+              <input
+                type="radio"
+                id="no-rate"
+                class="input-no-rate"
+                name="review[rating]"
+                value="1"
+                checked
+                aria-label="No rating."
+              />
+              <input
+                type="radio"
+                id="first-rate1"
+                name="review[rating]"
+                value="1"
+              />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input
+                type="radio"
+                id="first-rate2"
+                name="review[rating]"
+                value="2"
+              />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input
+                type="radio"
+                id="first-rate3"
+                name="review[rating]"
+                value="3"
+              />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input
+                type="radio"
+                id="first-rate4"
+                name="review[rating]"
+                value="4"
+              />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input
+                type="radio"
+                id="first-rate5"
+                name="review[rating]"
+                value="5"
+              />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+          </div>
+
+          <div class="mb-3 mt-3">
+            <label for="comment" class="form-label">Comment</label>
+            <textarea
+              name="review[comment]"
+              id="comment"
+              cols="30"
+              rows="3"
+              class="form-control"
+              placeholder="Share your experience..."
+              required
+            ></textarea>
+            <div class="invalid-feedback">Please share your experience...</div>
+          </div>
+          <button class="btn review-submit-btn">Submit Review</button>
+        </form>
+      </div>
+      <div class="listing-summary">
+        <h4><b>Experience Highlights</b></h4>
+        <p><b>Average Rating:</b> ⭐ <%=avgRating %> / 5</p>
+        <p><b>Total Reviews:</b> <%= listing.reviews.length %></p>
+      </div>
+    </div>
+
+    <!-- Show all Reviews -->
+    <% if(listing.reviews.length > 0) { %>
+    <div class="all-reviews">
+      <h4><b>All Reviews</b></h4>
+      <div class="row">
+        <% for(review of listing.reviews) { %>
+        <div class="card col-5 ms-3 mb-3">
+          <% if(currentUser && currentUser._id.equals(review.author._id)) { %>
+          <form
+            class="delete-form"
+            method="POST"
+            action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+          >
+            <button class="review-delete-btn">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </form>
+          <% } %>
+
+          <div class="card-body">
+            <h5 class="card-title"><%= review.author.username %></h5>
+            <p
+              class="starability-result card-text"
+              data-rating="<%= review.rating %>"
+            ></p>
+            <p class="card-text"><%= review.comment %></p>
+            <p class="text-muted" style="font-size: 0.9rem">
+              <%= new Date(review.createdAt).toLocaleString("en-IN", { day:
+              "2-digit", month: "short", year: "numeric", hour: "2-digit",
+              minute: "2-digit", hour12: true }) %>
+            </p>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</body>

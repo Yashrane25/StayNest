@@ -1,0 +1,390 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h3 class="edit-heading">
+  <i class="fa-solid fa-pen-to-square me-2"></i>Update Details
+</h3>
+      <form
+        method="POST"
+        action="/listings/<%= listing._id %>?_method=PUT"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
+        <br />
+        <!-- Edit Listing Form -->
+
+        <!-- Basic Details -->
+        <div class="card shadow-sm border-0 p-4 mb-4">
+          <h5 class="mb-3">📝 Basic Details</h5>
+          <div class="row g-3">
+            <!-- Title -->
+            <div class="col-md-12">
+              <label class="form-label fw-semibold">Title</label>
+              <input
+                type="text"
+                name="listing[title]"
+                value="<%= listing.title %>"
+                class="form-control edit-input"
+                required
+              />
+            </div>
+
+            <div class="col-md-12">
+  <label class="form-label fw-semibold">Owner Contact Number</label>
+  <input
+    type="tel"
+    name="listing[phoneNumber]"
+    value="<%= listing.phoneNumber %>"
+    class="form-control edit-input"
+    placeholder="e.g. 9876543210"
+    required
+  />
+</div>
+
+<div class="col-md-12">
+  <label class="form-label fw-semibold">Owner Name</label>
+  <input
+    type="text"
+    name="listing[ownerName]"
+    value="<%= listing.ownerName %>"
+    class="form-control edit-input"
+    placeholder="e.g. Yash R. Rane"
+    required
+  />
+</div>
+
+
+            
+
+            <!-- Description -->
+            <div class="col-md-12">
+              <label class="form-label fw-semibold">Description</label>
+              <textarea
+                name="listing[description]"
+                class="form-control edit-input"
+                rows="4"
+                required
+              >
+<%= listing.description %></textarea
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Images -->
+        <div class="card shadow-sm border-0 p-4 mb-4">
+          <h5 class="mb-3">📸 Images</h5>
+          <div class="row g-3 align-items-center">
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Current Image</label>
+              <img
+                src="<%= currentImageUrl %>"
+                class="img-fluid rounded border"
+                style="height: 160px; object-fit: cover"
+                alt="Current Image"
+              />
+            </div>
+
+            <div class="col-md-8">
+              <label class="form-label fw-semibold">Upload New Image</label>
+              <input
+                type="file"
+                name="listing[image]"
+                class="form-control edit-input"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing & Location -->
+        <div class="card shadow-sm border-0 p-4 mb-4">
+          <h5 class="mb-3">📍 Location & Pricing</h5>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Price per month</label>
+              <input
+                type="number"
+                name="listing[price]"
+                value="<%= listing.price %>"
+                class="form-control edit-input"
+                required
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Country</label>
+              <input
+                type="text"
+                name="listing[country]"
+                value="<%= listing.country %>"
+                class="form-control edit-input"
+                required
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Location (City)</label>
+              <input
+                type="text"
+                name="listing[location]"
+                value="<%= listing.location %>"
+                class="form-control edit-input"
+                required
+              />
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label fw-semibold">Full Address</label>
+              <input
+                type="text"
+                name="listing[address]"
+                value="<%= listing.address %>"
+                class="form-control edit-input"
+                placeholder="Street / Locality / Landmark"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Property Details -->
+        <div class="card shadow-sm border-0 p-4 mb-4">
+          <h5 class="mb-3">🏡 Property Details</h5>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Property Type</label>
+              <input
+                type="text"
+                name="listing[propertyType]"
+                value="<%= listing.propertyType %>"
+                class="form-control edit-input"
+                required
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Bedrooms</label>
+              <input
+                type="number"
+                name="listing[bedrooms]"
+                value="<%= listing.bedrooms %>"
+                class="form-control edit-input"
+                required
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Bathrooms</label>
+              <input
+                type="number"
+                name="listing[bathrooms]"
+                value="<%= listing.bathrooms %>"
+                class="form-control edit-input"
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Area (sq.ft)</label>
+              <input
+                type="number"
+                name="listing[area]"
+                value="<%= listing.area %>"
+                class="form-control edit-input"
+              />
+            </div>
+          </div>
+
+          <div class="my-3">
+            <label for="amenities" class="form-label fw-semibold"
+              >Amenities</label
+            >
+            <input
+              type="text"
+              id="amenities"
+              name="listing[amenities]"
+              placeholder="e.g. WiFi, Parking, AC"
+              class="form-control edit-input"
+              value="<%= listing.amenities %>"
+            />
+            <small class="text-muted">
+              Enter multiple amenities separated by commas
+            </small>
+          </div>
+
+           <div class="col-md-4">
+    <label class="form-label fw-semibold">Furnished</label>
+    <select name="listing[furnished]" class="form-select edit-input">
+      <option value="Unfurnished" <%= listing.furnished === "Unfurnished" ? "selected" : "" %>>
+        Unfurnished
+      </option>
+      <option value="Semi" <%= listing.furnished === "Semi" ? "selected" : "" %>>
+        Semi
+      </option>
+      <option value="Fully" <%= listing.furnished === "Fully" ? "selected" : "" %>>
+        Fully Furnished
+      </option>
+    </select>
+  </div>
+        </div>
+
+        <br />
+
+        <!-- Nearby Essentials -->
+        <h5 class="mt-4">Nearby Essentials 🚉✈️</h5>
+        <p class="text-muted">
+          Update information about essential travel points
+        </p>
+
+        <div class="row g-3 border rounded p-3 mb-4">
+          <!-- Airport -->
+          <div class="col-md-6">
+            <label class="form-label">Airport Name</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][airport][name]"
+              class="form-control"
+              value="<%= listing.nearbyEssentials?.airport?.name ?? '' %>"
+              placeholder="e.g. Airport Name"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Distance</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][airport][distance]"
+              class="form-control"
+              value="<%= listing.nearbyEssentials?.airport?.distance ?? '' %>"
+              placeholder="e.g. 12 km"
+              required
+            />
+          </div>
+
+          <!-- Railway Station -->
+          <div class="col-md-6">
+            <label class="form-label">Railway Station</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][railwayStation][name]"
+              class="form-control"
+              value="<%= listing.nearbyEssentials?.railwayStation?.name ?? '' %>"
+              placeholder="e.g. Railway Station Name"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Distance</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][railwayStation][distance]"
+              class="form-control"
+              value="<%= listing.nearbyEssentials?.railwayStation?.distance ?? '' %>"
+              placeholder="e.g. 8 km"
+              required
+            />
+          </div>
+
+          <!-- Bus Stand -->
+          <div class="col-md-6">
+            <label class="form-label">Bus Stand</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][busStand][name]"
+              class="form-control"
+              value="<%= listing.nearbyEssentials?.busStand?.name ?? '' %>"
+              placeholder="e.g. Bus Depot Name"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Distance</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][busStand][distance]"
+              class="form-control"
+              value="<%= listing.nearbyEssentials?.busStand?.distance ?? '' %>"
+              placeholder="e.g. 3 km"
+              required
+            />
+          </div>
+
+          <!-- City Center -->
+          <div class="col-md-6">
+            <label class="form-label">City Center / Market</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][cityCenter][name]"
+              class="form-control"
+              value="<%= listing.nearbyEssentials?.cityCenter?.name ?? '' %>"
+              placeholder="e.g. City Center / Market Name"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Distance</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][cityCenter][distance]"
+              class="form-control"
+              value="<%= listing.nearbyEssentials?.cityCenter?.distance ?? '' %>"
+              placeholder="e.g. 2 km"
+              required
+            />
+          </div>
+        </div>
+
+        <br />
+
+        <!-- Nearby Places -->
+        <h5 class="mt-4">Nearby Places to Visit 🌄</h5>
+        <p class="text-muted">Update information about a nearby attraction</p>
+
+        <div class="row g-3 border rounded p-3 mb-4">
+          <div class="col-md-4">
+            <label class="form-label">Place Name</label>
+            <input
+              type="text"
+              name="listing[nearbyPlaces][name]"
+              class="form-control"
+              value="<%= listing.nearbyPlaces?.name ?? '' %>"
+              placeholder="e.g. Sunset Lake View"
+            />
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Distance</label>
+            <input
+              type="text"
+              name="listing[nearbyPlaces][distance]"
+              class="form-control"
+              value="<%= listing.nearbyPlaces?.distance ?? '' %>"
+              placeholder="e.g. 1.5 km"
+            />
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Short Description</label>
+            <textarea
+              name="listing[nearbyPlaces][description]"
+              class="form-control"
+              rows="2"
+              placeholder="Brief details about the place (max 80 characters)"
+              maxlength="80"
+            >
+<%= listing.nearbyPlaces?.description ?? '' %></textarea
+            >
+          </div>
+        </div>
+
+        <button class="btn btn-dark edit-button">Save Changes</button>
+      </form>
+    </div>
+  </div>
+</body>

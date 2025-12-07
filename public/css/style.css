@@ -1,0 +1,500 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+/* navbar */
+.navbar {
+  height: 5rem;
+  background-color: white;
+}
+
+.fa-map-location-dot {
+  color: #0b3d91;
+  /* color: #007bff; */
+  font-size: 1.6rem;
+}
+
+.logo-name {
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  /* color: #007bff; */
+  color: #0b3d91;
+}
+
+.nav-link {
+  color: #2e2e2e;
+}
+
+/* Footer */
+.f-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 10rem;
+  background-color: whitesmoke;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.f-info-socials {
+  width: 100%;
+}
+
+.f-info-links {
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+
+.f-info-socials i {
+  font-size: 1.3rem;
+  margin: 0.5rem;
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: #2e2e2e;
+}
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+
+/* Cards */
+.index-price {
+  color: #515151;
+}
+
+.card {
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.card-img-top {
+  border-radius: 1rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0;
+}
+
+.card-text {
+  font-weight: 400;
+}
+
+.listing-card {
+  text-decoration: none;
+}
+
+/* Card Effect*/
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: white;
+}
+
+/* Create new Liating form*/
+.add-button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+  width: 11rem;
+  height: 2.8rem;
+  background-color: #ee5055;
+  border-color: white;
+}
+
+.add-button {
+  background-color: #ee5055;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.add-button:hover {
+  background-color: white;
+  border-color: #ee5055;
+  color: #ee5055;
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+
+.add-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.new-heading {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-control::placeholder {
+  font-size: 0.9rem;
+  color: #c4c4c4;
+}
+
+/* Edit Listing Form */
+.edit-heading {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.edit-input {
+  font-size: 0.9rem;
+  color: #787878;
+}
+
+.edit-button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+  width: 11rem;
+  height: 2.8rem;
+  background-color: #ee5055;
+  border: 2px solid white;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-button:hover {
+  background-color: white;
+  color: #ee5055;
+  border-color: #ee5055;
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+
+.edit-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Show page */
+/* .show-image {
+  height: 30vh;
+}
+
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
+} */
+
+.gallery img {
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.gallery-main {
+  height: 400px;
+  width: 100%;
+}
+
+.gallery-small {
+  height: 195px;
+  width: 100%;
+}
+
+.card-text {
+  line-height: 1.6;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 8px 20px;
+}
+
+.delete-btn {
+  background-color: #ee5055;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.delete-btn:hover {
+  background-color: white;
+  color: #ee5055;
+  border-color: #ee5055;
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(255, 0, 0, 0.35);
+  font-weight: bold;
+}
+
+.show-edit-btn {
+  /* margin-top: 2rem; */
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 6rem;
+  height: 2.8rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.show-edit-btn:hover {
+  background-color: #007bff;
+  color: whitesmoke;
+  border-color: #007bff;
+  transform: translateY(-6px) scale(1);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+.show-edit-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* .review-submit-btn {
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 10rem;
+  height: 2.8rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.review-submit-btn:hover {
+  background-color: #007bff;
+  color: whitesmoke;
+  border-color: #007bff;
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+} */
+
+/* Review Form */
+.review-section {
+  width: 380px;
+  float: left;
+  margin: 40px 0 40px 60px;
+  font-family: "Poppins", sans-serif;
+}
+
+.review-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.review-section label {
+  font-size: 1rem;
+  color: #222;
+  margin-bottom: 6px;
+  display: block;
+}
+
+#rating {
+  width: 100%;
+  accent-color: #ff5a5f;
+  margin-top: 5px;
+}
+
+.rating-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 4px;
+}
+
+#comment {
+  width: 100%;
+  resize: none;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1.4px solid #d3d3d3;
+  border-radius: 8px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#comment:focus {
+  outline: none;
+  border-color: #a7bbff;
+  box-shadow: 0 0 3px #a7bbff;
+}
+
+/* Submit button */
+.review-submit-btn {
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 10rem;
+  height: 2.8rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.review-submit-btn:hover {
+  background-color: #007bff;
+  color: whitesmoke;
+  border-color: #007bff;
+  transform: translateY(-6px) scale(1);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Review form and All reviews */
+.reviews-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.review-section {
+  width: 35%;
+  margin-left: 0;
+  box-sizing: border-box;
+}
+/* .all-reviews {
+  width: 100%;
+  box-sizing: border-box;
+} */
+
+.review-section {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+/* .all-reviews {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 40px;
+} */
+
+/* .all-reviews h4 {
+  margin-bottom: 1rem;
+} */
+
+/* All review style */
+.all-reviews {
+  background: #fefefe;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  margin: 40px 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.all-reviews h4 {
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #222;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.all-reviews .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.all-reviews .card {
+  flex: 1 1 45%;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.all-reviews .card-body {
+  padding: 20px;
+}
+
+.all-reviews .card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.all-reviews .card-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.all-reviews .card-text:first-of-type {
+  font-weight: bold;
+  color: #f5a623;
+}
+
+/* Listing summary */
+.listing-summary {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px 0 0 20px;
+  width: 60%;
+  margin: 40px 0;
+  min-height: 250px;
+}
+
+.listing-summary h4 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.listing-summary p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.listing-summary b {
+  color: #111;
+}
+
+/* Review Delete */
+/* Position delete button in top-right corner */
+.delete-form {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  margin: 0;
+}
+
+/* Remove background/border and make icon red */
+.review-delete-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.review-delete-btn i {
+  color: red;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}

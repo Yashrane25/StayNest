@@ -1,0 +1,69 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+  <div class="container my-4">
+    <h2
+      class="mb-4 fw-bold"
+      style="
+        font-family: 'Poppins', sans-serif;
+        font-size: 28px;
+        color: #6c757d;
+      "
+    >
+      Search Results for "<span style="color: #343a40"><%= location %></span>"
+    </h2>
+
+    <% if(listings.length === 0) { %>
+    <p class="text-muted" style="font-family: 'Roboto', sans-serif">
+      No listings found.
+    </p>
+    <% } %>
+
+    <div
+      class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 gx-4 gy-4"
+    >
+      <% for(let listing of listings) { %>
+      <a href="/listings/<%= listing._id %>" class="listing-card">
+        <div class="col mb-0">
+          <div
+            class="card"
+            style="height: 18rem; overflow: hidden; border-radius: 12px"
+          >
+            <div style="height: 70%; overflow: hidden; border-radius: 12px">
+              <img
+                src="<%= listing.image.url %>"
+                class="card-img-top hover-img"
+                alt="Image"
+                style="
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  transition: transform 0.3s ease;
+                "
+              />
+            </div>
+            <div class="card-body" style="height: 30%; overflow: hidden">
+              <p
+                class="card-text mb-0"
+                style="font-family: 'Poppins', sans-serif"
+              >
+                <b><%= listing.title %></b><br />
+                <span class="index-price">
+                  &#8377; <%= listing.price.toLocaleString("en-IN") %> per night
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+      <% } %>
+    </div>
+  </div>
+
+  <style>
+    /* Hover effect: zoom image slightly */
+    .listing-card .hover-img:hover {
+      transform: scale(1.05);
+      border-radius: 12px;
+    }
+  </style>
+</body>
