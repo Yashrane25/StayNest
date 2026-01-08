@@ -22,7 +22,7 @@
       <!-- Combined Nearby Essentials + Places Box -->
       <div class="col-md-4 d-flex flex-column gap-2" style="height: 480px">
         <!-- Nearby Essentials Section -->
-        <div class="card flex-fill shadow-sm" style="height: 300px">
+        <div class="card flex-fill shadow-sm" style="height: 310px">
           <div
             class="card-header text-white d-flex align-items-center"
             style="background-color: #1c619e; color: white"
@@ -37,45 +37,56 @@
             <% if (listing.nearbyEssentials) { %> <% if
             (listing.nearbyEssentials.airport?.name) { %>
             <p class="mb-0 text-truncate">
-              <strong>Airport:</strong> <%=
-              listing.nearbyEssentials.airport.name %>
+              <strong>Airport:</strong>
+              <%= listing.nearbyEssentials.airport.name %>
             </p>
             <p class="text-muted mb-1 text-truncate">
-              <small
-                >Distance: <%= listing.nearbyEssentials.airport.distance%>
+              <small>
+                Distance: <%= listing.nearbyEssentials.airport.distance %>
                 <span>km</span>
               </small>
             </p>
             <% } %> <% if (listing.nearbyEssentials.railwayStation?.name) { %>
             <p class="mb-0 text-truncate">
-              <strong>Railway Station:</strong> <%=
-              listing.nearbyEssentials.railwayStation.name %>
+              <strong>Railway Station:</strong>
+              <%= listing.nearbyEssentials.railwayStation.name %>
             </p>
             <p class="text-muted mb-1 text-truncate">
-              <small
-                >Distance: <%= listing.nearbyEssentials.railwayStation.distance
+              <small>
+                Distance: <%= listing.nearbyEssentials.railwayStation.distance
                 %> <span>km</span>
               </small>
             </p>
             <% } %> <% if (listing.nearbyEssentials.busStand?.name) { %>
             <p class="mb-0 text-truncate">
-              <strong>Bus Stand:</strong> <%=
-              listing.nearbyEssentials.busStand.name %>
+              <strong>Bus Stand:</strong>
+              <%= listing.nearbyEssentials.busStand.name %>
             </p>
             <p class="text-muted mb-1 text-truncate">
-              <small
-                >Distance: <%= listing.nearbyEssentials.busStand.distance %>
+              <small>
+                Distance: <%= listing.nearbyEssentials.busStand.distance %>
                 <span>km</span>
               </small>
             </p>
             <% } %> <% if (listing.nearbyEssentials.cityCenter?.name) { %>
             <p class="mb-0 text-truncate">
-              <strong>City Center:</strong> <%=
-              listing.nearbyEssentials.cityCenter.name %>
+              <strong>City Center:</strong>
+              <%= listing.nearbyEssentials.cityCenter.name %>
             </p>
             <p class="text-muted mb-2 text-truncate">
-              <small
-                >Distance: <%= listing.nearbyEssentials.cityCenter.distance %>
+              <small>
+                Distance: <%= listing.nearbyEssentials.cityCenter.distance %>
+                <span>km</span>
+              </small>
+            </p>
+            <% } %> <% if (listing.nearbyEssentials.hospital?.name) { %>
+            <p class="mb-0 text-truncate">
+              <strong>Hospital:</strong>
+              <%= listing.nearbyEssentials.hospital.name %>
+            </p>
+            <p class="text-muted mb-2 text-truncate">
+              <small>
+                Distance: <%= listing.nearbyEssentials.hospital.distance %>
                 <span>km</span>
               </small>
             </p>

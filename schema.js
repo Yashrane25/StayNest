@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const { distinct } = require("./models/review");
 
 /* Joi Schema for validating listing data */
 module.exports.listingSchema = Joi.object({
@@ -51,6 +52,10 @@ module.exports.listingSchema = Joi.object({
         distance: Joi.string().required(),
       }),
       cityCenter: Joi.object({
+        name: Joi.string().required(),
+        distance: Joi.string().required(),
+      }),
+      hospital: Joi.object({
         name: Joi.string().required(),
         distance: Joi.string().required(),
       }),

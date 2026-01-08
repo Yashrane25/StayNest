@@ -217,7 +217,7 @@
            <div class="col-md-4">
     <label class="form-label fw-semibold">Furnished</label>
     <select name="listing[furnished]" class="form-select edit-input">
-      <option value="Unfurnished" <%= listing.furnished === "Unfurnished" ? "selected" : "" %>>
+      <option value="Unfurnished" <%= listing.furnished === "Unfurnished" ? "selected" : "" %> >
         Unfurnished
       </option>
       <option value="Semi" <%= listing.furnished === "Semi" ? "selected" : "" %>>
@@ -334,6 +334,31 @@
               name="listing[nearbyEssentials][cityCenter][distance]"
               class="form-control"
               value="<%= listing.nearbyEssentials?.cityCenter?.distance ?? '' %>"
+              placeholder="e.g. 2 km"
+              required
+            />
+          </div>
+
+            <!-- Hospital -->
+          <div class="col-md-6">
+            <label class="form-label">Hospital</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][hospital][name]"
+              class="form-control"
+              value="<%= listing.nearbyEssentials?.hospital?.name ?? '' %>"
+              placeholder="e.g. hospital name"
+              required
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Distance</label>
+            <input
+              type="text"
+              name="listing[nearbyEssentials][hospital][distance]"
+              class="form-control"
+              value="<%= listing.nearbyEssentials?.hospital?.distance ?? '' %>"
               placeholder="e.g. 2 km"
               required
             />

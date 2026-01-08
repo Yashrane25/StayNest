@@ -60,6 +60,10 @@ const listingSchema = new Schema({
       name: { type: String, required: true },
       distance: { type: String, required: true },
     },
+    hospital: {
+      name: { type: String, required: true },
+      distance: { type: String, required: true },
+    },
   },
 
   reviews: [
