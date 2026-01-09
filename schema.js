@@ -13,6 +13,7 @@ module.exports.listingSchema = Joi.object({
     }),
 
     price: Joi.number().required().min(0),
+    deposit: Joi.number().required().min(0),
     phoneNumber: Joi.number().required(),
     ownerName: Joi.string().required(),
     location: Joi.string().required(),
@@ -51,7 +52,7 @@ module.exports.listingSchema = Joi.object({
         name: Joi.string().required(),
         distance: Joi.string().required(),
       }),
-      cityCenter: Joi.object({
+      groceryStore: Joi.object({
         name: Joi.string().required(),
         distance: Joi.string().required(),
       }),

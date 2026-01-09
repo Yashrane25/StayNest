@@ -68,14 +68,14 @@
                 <span>km</span>
               </small>
             </p>
-            <% } %> <% if (listing.nearbyEssentials.cityCenter?.name) { %>
+            <% } %> <% if (listing.nearbyEssentials.groceryStore?.name) { %>
             <p class="mb-0 text-truncate">
-              <strong>City Center:</strong>
-              <%= listing.nearbyEssentials.cityCenter.name %>
+              <strong>Grocery Store:</strong>
+              <%= listing.nearbyEssentials.groceryStore.name %>
             </p>
             <p class="text-muted mb-2 text-truncate">
               <small>
-                Distance: <%= listing.nearbyEssentials.cityCenter.distance %>
+                Distance: <%= listing.nearbyEssentials.groceryStore.distance %>
                 <span>km</span>
               </small>
             </p>
@@ -112,7 +112,7 @@
             </p>
             <% if (listing.nearbyPlaces.distance) { %>
             <p class="mb-1">
-              <strong>Distance:</strong> <%= listing.nearbyPlaces.distance %>
+              <strong>Distance:</strong> <%= listing.nearbyPlaces.distance %> km
             </p>
             <% } %> <% if (listing.nearbyPlaces.description) { %>
             <p class="mb-1">
@@ -148,11 +148,23 @@
         <div
           class="bg-light p-3 rounded mb-3 d-flex align-items-center justify-content-between"
         >
+          <!-- Price -->
           <div>
             <h4 class="text-success fw-bold mb-0">
               ₹ <%= listing.price.toLocaleString("en-IN") %>
             </h4>
             <small class="text-muted">per month</small>
+          </div>
+
+          <!-- Divider -->
+          <div class="vr mx-3"></div>
+
+          <!-- Deposit -->
+          <div class="text-end">
+            <h6 class="fw-semibold mb-0">
+              ₹ <%= listing.deposit.toLocaleString("en-IN") %>
+            </h6>
+            <small class="text-muted">Security deposit (one-time)</small>
           </div>
         </div>
 

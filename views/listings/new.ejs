@@ -51,9 +51,11 @@
           </div>
 
           <div class="row">
-            <div class="mb-3 col-md-4">
-              <label for="price" class="form-lable">Price per month</label>
+            <!-- Price -->
+            <div class="mb-3 col-md-6">
+              <label for="price" class="form-label">Price per month</label>
               <input
+                id="price"
                 type="number"
                 name="listing[price]"
                 placeholder="e.g. ₹2500"
@@ -63,6 +65,23 @@
               />
               <div class="invalid-feedback">
                 Please enter a valid price (e.g. ₹2500).
+              </div>
+            </div>
+
+            <!-- Deposit -->
+            <div class="mb-3 col-md-6">
+              <label for="deposit" class="form-label">Security deposit</label>
+              <input
+                id="deposit"
+                type="number"
+                name="listing[deposit]"
+                placeholder="e.g. ₹5000"
+                class="form-control"
+                min="0"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter a valid deposit amount (e.g. ₹5000).
               </div>
             </div>
 
@@ -97,7 +116,7 @@
               </div>
             </div>
 
-            <div class="mb-3 col-md-8">
+            <div class="mb-3 col-md-12">
               <label for="country" class="form-lable">Country</label>
               <input
                 type="text"
@@ -245,7 +264,7 @@
               required
             />
             <input
-              type="text"
+              type="number"
               name="listing[nearbyEssentials][airport][distance]"
               placeholder="Distance (e.g. 12 km)"
               class="form-control"
@@ -264,7 +283,7 @@
               required
             />
             <input
-              type="text"
+              type="number"
               name="listing[nearbyEssentials][railwayStation][distance]"
               placeholder="Distance (e.g. 5 km)"
               class="form-control"
@@ -283,7 +302,7 @@
               required
             />
             <input
-              type="text"
+              type="number"
               name="listing[nearbyEssentials][busStand][distance]"
               placeholder="Distance (e.g. 3 km)"
               class="form-control"
@@ -291,19 +310,19 @@
             />
           </div>
 
-          <!-- City Center -->
+          <!-- Grocery Store / Supermarket -->
           <div class="col-md-6">
-            <label class="form-label">City Center / Market</label>
+            <label class="form-label">Grocery Store / Supermarket</label>
             <input
               type="text"
-              name="listing[nearbyEssentials][cityCenter][name]"
+              name="listing[nearbyEssentials][groceryStore][name]"
               placeholder="City Center / Market Name"
               class="form-control mb-2"
               required
             />
             <input
-              type="text"
-              name="listing[nearbyEssentials][cityCenter][distance]"
+              type="number"
+              name="listing[nearbyEssentials][groceryStore][distance]"
               placeholder="Distance (e.g. 4 km)"
               class="form-control"
               required
@@ -321,7 +340,7 @@
               required
             />
             <input
-              type="text"
+              type="number"
               name="listing[nearbyEssentials][hospital][distance]"
               placeholder="Distance (e.g. 4km)"
               class="form-control"
@@ -354,7 +373,7 @@
           <div class="col-md-4">
             <label class="form-label">Distance</label>
             <input
-              type="text"
+              type="number"
               name="listing[nearbyPlaces][distance]"
               placeholder="e.g. 2 km"
               class="form-control"

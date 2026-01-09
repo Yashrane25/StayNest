@@ -67,9 +67,8 @@
                 class="form-control edit-input"
                 rows="4"
                 required
-              >
-<%= listing.description %></textarea
-              >
+              ><%= listing.description %></textarea>
+              
             </div>
           </div>
         </div>
@@ -115,6 +114,17 @@
             </div>
 
             <div class="col-md-4">
+              <label class="form-label fw-semibold">Security deposit</label>
+              <input 
+                type="number" 
+                name="listing[deposit]" 
+                value="<%= listing.deposit %>"
+                class="form-control edit-input"
+                required
+              />
+            </div>
+
+            <div class="col-md-4">
               <label class="form-label fw-semibold">Country</label>
               <input
                 type="text"
@@ -125,7 +135,7 @@
               />
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-12">
               <label class="form-label fw-semibold">Location (City)</label>
               <input
                 type="text"
@@ -186,7 +196,7 @@
               />
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-12">
               <label class="form-label fw-semibold">Area (sq.ft)</label>
               <input
                 type="number"
@@ -217,17 +227,28 @@
            <div class="col-md-4">
     <label class="form-label fw-semibold">Furnished</label>
     <select name="listing[furnished]" class="form-select edit-input">
-      <option value="Unfurnished" <%= listing.furnished === "Unfurnished" ? "selected" : "" %> >
+      <option value="Unfurnished" <%= listing.furnished === "Unfurnished" ? "selected" : ""%>>
         Unfurnished
       </option>
-      <option value="Semi" <%= listing.furnished === "Semi" ? "selected" : "" %>>
+      <option value="Semi" <%= listing.furnished === "Semi" ? "selected" : ""%>>
         Semi
       </option>
-      <option value="Fully" <%= listing.furnished === "Fully" ? "selected" : "" %>>
+      <option value="Fully" <%= listing.furnished === "Fully" ? "selected" : ""%>>
         Fully Furnished
       </option>
     </select>
   </div>
+  <br>
+
+  <div class="form-check mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="listing[isAvailable]"
+                checked
+              />
+              <label class="form-check-lable">Available for booking</label>
+            </div>
         </div>
 
         <br />
@@ -255,7 +276,7 @@
           <div class="col-md-6">
             <label class="form-label">Distance</label>
             <input
-              type="text"
+              type="number"
               name="listing[nearbyEssentials][airport][distance]"
               class="form-control"
               value="<%= listing.nearbyEssentials?.airport?.distance ?? '' %>"
@@ -280,7 +301,7 @@
           <div class="col-md-6">
             <label class="form-label">Distance</label>
             <input
-              type="text"
+              type="number"
               name="listing[nearbyEssentials][railwayStation][distance]"
               class="form-control"
               value="<%= listing.nearbyEssentials?.railwayStation?.distance ?? '' %>"
@@ -305,7 +326,7 @@
           <div class="col-md-6">
             <label class="form-label">Distance</label>
             <input
-              type="text"
+              type="number"
               name="listing[nearbyEssentials][busStand][distance]"
               class="form-control"
               value="<%= listing.nearbyEssentials?.busStand?.distance ?? '' %>"
@@ -314,15 +335,15 @@
             />
           </div>
 
-          <!-- City Center -->
+          <!-- Grocery Store / Supermarket -->
           <div class="col-md-6">
-            <label class="form-label">City Center / Market</label>
+            <label class="form-label">Grocery Store / Supermarket</label>
             <input
               type="text"
-              name="listing[nearbyEssentials][cityCenter][name]"
+              name="listing[nearbyEssentials][groceryStore][name]"
               class="form-control"
-              value="<%= listing.nearbyEssentials?.cityCenter?.name ?? '' %>"
-              placeholder="e.g. City Center / Market Name"
+              value="<%= listing.nearbyEssentials?.groceryStore?.name ?? '' %>"
+              placeholder="e.g. Grocery Store / Supermarket"
               required
             />
           </div>
@@ -330,10 +351,10 @@
           <div class="col-md-6">
             <label class="form-label">Distance</label>
             <input
-              type="text"
-              name="listing[nearbyEssentials][cityCenter][distance]"
+              type="number"
+              name="listing[nearbyEssentials][groceryStore][distance]"
               class="form-control"
-              value="<%= listing.nearbyEssentials?.cityCenter?.distance ?? '' %>"
+              value="<%= listing.nearbyEssentials?.groceryStore?.distance ?? '' %>"
               placeholder="e.g. 2 km"
               required
             />
@@ -355,7 +376,7 @@
           <div class="col-md-6">
             <label class="form-label">Distance</label>
             <input
-              type="text"
+              type="number"
               name="listing[nearbyEssentials][hospital][distance]"
               class="form-control"
               value="<%= listing.nearbyEssentials?.hospital?.distance ?? '' %>"
@@ -372,7 +393,7 @@
         <p class="text-muted">Update information about a nearby attraction</p>
 
         <div class="row g-3 border rounded p-3 mb-4">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <label class="form-label">Place Name</label>
             <input
               type="text"
@@ -383,10 +404,10 @@
             />
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-6">
             <label class="form-label">Distance</label>
             <input
-              type="text"
+              type="number"
               name="listing[nearbyPlaces][distance]"
               class="form-control"
               value="<%= listing.nearbyPlaces?.distance ?? '' %>"
@@ -402,9 +423,7 @@
               rows="2"
               placeholder="Brief details about the place (max 80 characters)"
               maxlength="80"
-            >
-<%= listing.nearbyPlaces?.description ?? '' %></textarea
-            >
+            > <%= listing.nearbyPlaces?.description ?? '' %></textarea>
           </div>
         </div>
 

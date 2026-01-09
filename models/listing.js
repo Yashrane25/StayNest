@@ -13,6 +13,11 @@ const listingSchema = new Schema({
   },
   price: { type: Number, required: true },
   phoneNumber: { type: Number, required: true },
+  deposit: {
+    type: Number,
+    default: 0,
+    required: true,
+  },
   ownerName: { type: String, required: true },
   location: { type: String, required: true },
   country: { type: String, required: true },
@@ -36,7 +41,7 @@ const listingSchema = new Schema({
       type: String,
     },
     distance: {
-      type: String,
+      type: Number,
     },
     description: {
       type: String,
@@ -46,23 +51,23 @@ const listingSchema = new Schema({
   nearbyEssentials: {
     airport: {
       name: { type: String, required: true },
-      distance: { type: String, required: true },
+      distance: { type: Number, required: true },
     },
     railwayStation: {
       name: { type: String, required: true },
-      distance: { type: String, required: true },
+      distance: { type: Number, required: true },
     },
     busStand: {
       name: { type: String, required: true },
-      distance: { type: String, required: true },
+      distance: { type: Number, required: true },
     },
-    cityCenter: {
+    groceryStore: {
       name: { type: String, required: true },
-      distance: { type: String, required: true },
+      distance: { type: Number, required: true },
     },
     hospital: {
       name: { type: String, required: true },
-      distance: { type: String, required: true },
+      distance: { type: Number, required: true },
     },
   },
 

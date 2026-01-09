@@ -48,6 +48,7 @@ module.exports.showListing = async (req, res) => {
 module.exports.createListing = async (req, res, next) => {
   // Convert checkbox value manually
   req.body.listing.isAvailable = req.body.listing.isAvailable === "on";
+  req.body.listing.deposit = Number(req.body.listing.deposit);
   let url = req.file.path;
   let filename = req.file.filename;
   const newListing = new Listing(req.body.listing);
@@ -80,6 +81,11 @@ module.exports.renderEditeForm = async (req, res) => {
 /* Update Controller (Update a listing in DB) */
 module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
+  req.body.listing.isAvailable = req.body.listing.isAvailable === "on";
+  if (req.body.listing.deposit !== undefined) {
+    req.body.listing.deposit = Number(req.body.listing.deposit);
+  }
+
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
   if (typeof req.file !== "undefined") {
@@ -98,7 +104,7 @@ module.exports.destroyListing = async (req, res) => {
   let deletedListing = await Listing.findByIdAndDelete(id);
   console.log(deletedListing);
   req.flash("success", "Listing successfully deleted!");
-  res.redirect(`/listings/${id}`);
+  res.redirect("/listings");
 };
 
 /* Search Controller (Search listings based on query) */
