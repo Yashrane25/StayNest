@@ -4,7 +4,7 @@ const ExpressError = require("./utils/ExpressError.js"); // for validateListing 
 const { listingSchema, reviewSchema } = require("./schema.js"); // for validation middlewares.
 const multer = require("multer"); // for file upload handling.
 
-// Middleware to check if user is logged in.
+//Middleware to check if user is logged in.
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
     req.session.redirectUrl = req.originalUrl;
@@ -14,7 +14,7 @@ module.exports.isLoggedIn = (req, res, next) => {
   next();
 };
 
-// Middleware to save redirect URL for logged-in users.
+//Middleware to save redirect URL for logged-in users.
 module.exports.saveRedirectUrl = (req, res, next) => {
   if (req.session.redirectUrl) {
     res.locals.redirectUrl = req.session.redirectUrl;
@@ -22,7 +22,7 @@ module.exports.saveRedirectUrl = (req, res, next) => {
   next();
 };
 
-// Middleware to check if the current user is the owner of the listing.
+//Middleware to check if the current user is the owner of the listing.
 module.exports.isOwner = async (req, res, next) => {
   let { id } = req.params;
   let listing = await Listing.findById(id);
@@ -33,11 +33,23 @@ module.exports.isOwner = async (req, res, next) => {
   next();
 };
 
-// Middleware for validating listing data using Joi schema.
+//Middleware for validating listing data using Joi schema.
 module.exports.validateListing = (req, res, next) => {
-  let { error } = listingSchema.validate(req.body);
+  //Ensure req.body.listing exists
+  req.body.listing = req.body.listing || {};
+
+  //Inject images from multer into req.body.listing if uploaded
+  if (req.files && req.files.length > 0) {
+    req.body.listing.images = req.body.listing.images || [];
+  } else if (!req.body.listing.images) {
+    //If no images uploaded and none exist, default to empty array
+    req.body.listing.images = [];
+  }
+
+  // Validate with Joi, allow unknown keys (like deleteImages)
+  const { error } = listingSchema.validate(req.body, { allowUnknown: true });
   if (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
+    const errMsg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(400, errMsg);
   } else {
     next();
@@ -69,8 +81,7 @@ module.exports.isReviewAuthor = async (req, res, next) => {
 // Multer middleware for handling file uploads with size limit.
 module.exports.multerErrorHandler = (err, req, res, next) => {
   if (err instanceof multer.MulterError && err.code === "LIMIT_FILE_SIZE") {
-    req.flash("error", "Image is too large! Max size is 1 MB.");
-    // return res.redirect("/listings/new"); // correct redirect
+    req.flash("error", "Image is too large! Max size is 10 MB.");
     // If editing, redirect to edit page
     if (req.params.id) {
       return res.redirect(`/listings/${req.params.id}/edit`);

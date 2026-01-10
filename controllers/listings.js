@@ -1,4 +1,5 @@
 const Listing = require("../models/listing");
+const { cloudinary } = require("../cloudConfig");
 
 /* Index Controller (Get all listings) */
 module.exports.index = async (req, res) => {
@@ -49,11 +50,21 @@ module.exports.createListing = async (req, res, next) => {
   // Convert checkbox value manually
   req.body.listing.isAvailable = req.body.listing.isAvailable === "on";
   req.body.listing.deposit = Number(req.body.listing.deposit);
-  let url = req.file.path;
-  let filename = req.file.filename;
+
+  if (!req.files || req.files.length === 0) {
+    req.flash("error", "You must upload at least 1 image.");
+    return res.redirect("/listings/new");
+  }
+
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id; //Set the owner to the currently logged-in user.
-  newListing.image = { url, filename };
+
+  //Multiple images upload handling
+  newListing.images = req.files.map((file) => ({
+    url: file.path,
+    filename: file.filename,
+  }));
+
   await newListing.save();
   req.flash("success", "Successfully created a new listing!");
   res.redirect("/listings");
@@ -67,33 +78,71 @@ module.exports.renderEditeForm = async (req, res) => {
     req.flash("error", "Listing Not Found");
     return res.redirect("/listings");
   }
-  let currentImageUrl = listing.image.url;
-  currentImageUrl = currentImageUrl.replace(
-    "/upload",
-    "/upload/h_100,w_150,c_fill"
-  );
-  res.render("./listings/edit.ejs", {
-    currentImageUrl,
-    listing,
-  });
+
+  res.render("./listings/edit.ejs", { listing });
 };
 
 /* Update Controller (Update a listing in DB) */
 module.exports.updateListing = async (req, res) => {
-  let { id } = req.params;
+  const { id } = req.params;
+
+  // Ensure req.body.listing exists
+  req.body.listing = req.body.listing || {};
+
+  // Convert types for specific fields
   req.body.listing.isAvailable = req.body.listing.isAvailable === "on";
-  if (req.body.listing.deposit !== undefined) {
-    req.body.listing.deposit = Number(req.body.listing.deposit);
+  req.body.listing.deposit = Number(req.body.listing.deposit);
+  req.body.listing.price = Number(req.body.listing.price);
+
+  // Find the listing first
+  const listing = await Listing.findById(id);
+  if (!listing) {
+    req.flash("error", "Listing not found");
+    return res.redirect("/listings");
   }
 
-  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-
-  if (typeof req.file !== "undefined") {
-    let url = req.file.path;
-    let filename = req.file.filename;
-    listing.image = { url, filename };
-    await listing.save();
+  //Update all other fields dynamically
+  for (let key in req.body.listing) {
+    if (key !== "images") {
+      // keep images handling separate
+      listing[key] = req.body.listing[key];
+    }
   }
+
+  //Delete selected images (keep your original logic)
+  if (req.body.deleteImages) {
+    for (let filename of req.body.deleteImages) {
+      await cloudinary.uploader.destroy(filename);
+    }
+
+    listing.images = listing.images.filter(
+      (img) => !req.body.deleteImages.includes(img.filename)
+    );
+  }
+
+  //Add new images if any (keep your original logic)
+  if (req.files && req.files.length > 0) {
+    const newImages = req.files.map((file) => ({
+      url: file.path,
+      filename: file.filename,
+    }));
+
+    const totalImages = listing.images.length + newImages.length;
+
+    if (totalImages > 5) {
+      req.flash(
+        "error",
+        `You can only have up to 5 images per listing. You currently have ${listing.images.length} images.`
+      );
+      return res.redirect(`/listings/${id}/edit`);
+    }
+
+    listing.images.push(...newImages);
+  }
+
+  //Save the updated listing
+  await listing.save();
+
   req.flash("success", "Listing successfully updated!");
   res.redirect(`/listings/${id}`);
 };
@@ -127,7 +176,7 @@ module.exports.searchListings = async (req, res) => {
 
 /* Search Suggestions Controller (Provide search suggestions based on user input) */
 module.exports.searchSuggestions = async (req, res) => {
-  const { q } = req.query; // q = query typed by user
+  const { q } = req.query; //q = query typed by user
   if (!q || q.trim() === "") return res.json([]);
 
   //Find matching listings (title or location)

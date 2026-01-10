@@ -7,16 +7,61 @@
 
     <!-- Image + Nearby Info Side by Side -->
     <div class="row g-3 align-items-stretch">
-      <!-- Main Image -->
+      <!-- Image -->
       <div class="col-md-8">
-        <div class="card shadow-sm rounded">
-          <img
-            src="<%= listing.image.url %>"
-            class="img-fluid rounded"
-            alt="Main Image"
-            style="height: 480px; width: 100%; object-fit: cover"
-          />
+        <% if (listing.images.length > 0) { %>
+        <div
+          id="listingCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <!-- Indicators (dots) -->
+          <div class="carousel-indicators">
+            <% listing.images.forEach((img, index) => { %>
+            <button
+              type="button"
+              data-bs-target="#listingCarousel"
+              data-bs-slide-to="<%= index %>"
+              class="<%= index === 0 ? 'active' : '' %>"
+            ></button>
+            <% }) %>
+          </div>
+
+          <!-- Images -->
+          <div class="carousel-inner rounded shadow">
+            <% listing.images.forEach((img, index) => { %>
+            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+              <img
+                src="<%= img.url %>"
+                class="d-block w-100"
+                style="height: 480px; object-fit: cover"
+                alt="listing image"
+              />
+            </div>
+            <% }) %>
+          </div>
+
+          <!-- Left arrow -->
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#listingCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+
+          <!-- Right arrow -->
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#listingCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+          </button>
         </div>
+        <% } %>
       </div>
 
       <!-- Combined Nearby Essentials + Places Box -->

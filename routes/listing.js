@@ -26,7 +26,7 @@ router
   .get(wrapAsync(listingsController.index))
   .post(
     isLoggedIn,
-    upload.single("listing[image]"),
+    upload.array("listing[images]", 5),
     multerErrorHandler,
     validateListing,
     wrapAsync(listingsController.createListing)
@@ -52,14 +52,15 @@ router
   .put(
     isLoggedIn,
     isOwner,
-    upload.single("listing[image]"),
+    upload.array("listing[images]", 5),
     multerErrorHandler,
     validateListing,
     wrapAsync(listingsController.updateListing)
   )
   .delete(isLoggedIn, isOwner, wrapAsync(listingsController.destroyListing));
 
-/* Edit Route (Show form to edit a listing) */ /* isLoggedIn middleware to ensure only logged-in users can access this route */
+/* Edit Route (Show form to edit a listing) */
+/* isLoggedIn middleware to ensure only logged-in users can access this route */
 /* isOwner middleware to ensure only the owner can edit the listing */
 router.get(
   "/:id/edit",

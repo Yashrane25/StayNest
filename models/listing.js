@@ -7,10 +7,12 @@ const Schema = mongoose.Schema;
 const listingSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  image: {
-    url: String,
-    filename: String,
-  },
+  images: [
+    {
+      url: String,
+      filename: String,
+    },
+  ],
   price: { type: Number, required: true },
   phoneNumber: { type: Number, required: true },
   deposit: {

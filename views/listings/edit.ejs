@@ -74,29 +74,60 @@
         </div>
 
         <!-- Images -->
-        <div class="card shadow-sm border-0 p-4 mb-4">
-          <h5 class="mb-3">📸 Images</h5>
-          <div class="row g-3 align-items-center">
-            <div class="col-md-4">
-              <label class="form-label fw-semibold">Current Image</label>
-              <img
-                src="<%= currentImageUrl %>"
-                class="img-fluid rounded border"
-                style="height: 160px; object-fit: cover"
-                alt="Current Image"
-              />
-            </div>
 
-            <div class="col-md-8">
-              <label class="form-label fw-semibold">Upload New Image</label>
-              <input
-                type="file"
-                name="listing[image]"
-                class="form-control edit-input"
-              />
-            </div>
-          </div>
-        </div>
+        <div class="card shadow-sm border-0 p-4 mb-4">
+  <h5 class="mb-3">📸 Images</h5>
+
+  <!-- Existing Images -->
+  <label class="form-label fw-semibold">Current Images</label>
+  <div class="d-flex flex-wrap gap-3 mb-3" id="existingImages">
+    <% listing.images.forEach(img => { %>
+      <div class="position-relative">
+        <img
+          src="<%= img.url.replace('/upload', '/upload/h_120,w_160,c_fill') %>"
+          class="rounded border"
+          style="height:120px; width:160px; object-fit:cover;"
+        />
+        <!-- Delete checkbox -->
+        <input
+          type="checkbox"
+          name="deleteImages[]"
+          value="<%= img.filename %>"
+          class="form-check-input position-absolute top-0 end-0 m-1"
+        />
+      </div>
+    <% }) %>
+  </div>
+
+  <small class="text-muted">✔ Select images you want to remove</small>
+
+  <!-- Add new images -->
+  <label class="form-label fw-semibold mt-4">Add New Images</label>
+  <input
+    type="file"
+    name="listing[images]"
+    id="newImages"
+    class="form-control"
+    multiple
+    accept="image/*"
+    data-existing-count="<%= listing.images.length %>"
+  />
+
+  <!-- New image preview -->
+  <div id="newPreview" class="d-flex flex-wrap gap-2 mt-3"></div>
+</div>
+
+<script>
+  const newImagesInput = document.getElementById("newImages");
+  const newPreview = document.getElementById("newPreview");
+  const existingCount = parseInt(newImagesInput.dataset.existingCount);
+
+  newImagesInput.addEventListener("change", () => {
+    newPreview.innerHTML = "";
+    const remaining = 5 - existingCount;
+    // ...rest of code
+  });
+</script>
 
         <!-- Pricing & Location -->
         <div class="card shadow-sm border-0 p-4 mb-4">
