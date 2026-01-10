@@ -8,7 +8,7 @@
     <!-- Image + Nearby Info Side by Side -->
     <div class="row g-3 align-items-stretch">
       <!-- Image -->
-      <div class="col-md-8">
+      <div class="col-md-8 mb-3">
         <% if (listing.images.length > 0) { %>
         <div
           id="listingCarousel"
@@ -34,7 +34,7 @@
               <img
                 src="<%= img.url %>"
                 class="d-block w-100"
-                style="height: 480px; object-fit: cover"
+                style="height: 500px; object-fit: cover"
                 alt="listing image"
               />
             </div>
@@ -178,8 +178,8 @@
       </div>
     </div>
 
-    <!-- Listing Details -->
-    <div class="card mt-0 p-4 shadow-sm border-0 rounded-4">
+    <!-- Listing Details Card -->
+    <div class="card mt-2 p-4 shadow-sm border-0 rounded-4">
       <div class="card-body">
         <!-- Header -->
         <div class="mb-3">

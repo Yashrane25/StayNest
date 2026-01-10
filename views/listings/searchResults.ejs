@@ -30,7 +30,7 @@
           >
             <div style="height: 70%; overflow: hidden; border-radius: 12px">
               <img
-                src="<%= listing.image.url %>"
+                src="<%= listing.images[0]?.url || '/images/default.jpg' %>"
                 class="card-img-top hover-img"
                 alt="Image"
                 style="
