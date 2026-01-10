@@ -32,9 +32,25 @@ router
       failureFlash: true,
     }),
     userControllers.login
-  ); 
+  );
 
 /* Route to handle logout logic */
 router.get("/logout", userControllers.logout);
+
+/* Route to render forgot password form */
+router.get("/forgot-password", (req, res) => {
+  res.render("users/forgot.ejs");
+});
+
+/* Route to handle forgot password logic */
+router.post("/forgot-password", wrapAsync(userControllers.forgotPassword));
+
+/* Route to render reset password form */
+router.get("/reset-password/:token", (req, res) => {
+  res.render("users/reset.ejs", { token: req.params.token });
+});
+
+/* Route to handle reset password logic */
+router.post("/reset-password/:token", wrapAsync(userControllers.resetPassword));
 
 module.exports = router;

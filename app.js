@@ -42,6 +42,7 @@ async function main() {
 app.set("view engine", "ejs"); //Tells Express we are using EJS for templating.
 app.set("views", path.join(__dirname, "views")); //Tells Express to look inside the views folder to find templates.
 app.use(express.urlencoded({ extended: true })); //(middleware) To parse form data in POST requests.
+app.use(express.json()); //(middleware) To parse JSON data in requests.
 app.use(methodOverride("_method")); //This tells Express whenever a request has a query string or hidden field called _method, look at its value and treat the request as that method.
 app.engine("ejs", ejsMate); //Tells Express to use ejsMate as the engine for rendering EJS templates.
 app.use(express.static(path.join(__dirname, "/public"))); //To serve static files like CSS, JS, images from the public directory.
