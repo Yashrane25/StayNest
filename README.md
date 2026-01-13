@@ -67,35 +67,34 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
 ### 📁 Project Structure
 
 StayNest/
-|
+│
 ├── init/ # Database initialization & seed data
-│  ├── data.js
-│  └── index.js
-|
+│ ├── data.js
+│ └── index.js
+│
 ├── models/ # Mongoose schemas
-│  ├── listing.js
-│  ├── review.js
-│  └── user.js
-|
+│ ├── listing.js
+│ ├── review.js
+│ └── user.js
+│
 ├── routes/ # Express routes
-│  ├── listings.js
-│  ├── reviews.js
-│  └── users.js
+│ ├── listings.js
+│ ├── reviews.js
+│ └── users.js
 │
 ├── views/ # EJS templates
-│  ├── layouts/
-│  ├── listings/
-│  ├── users/
-│  └── partials/
+│ ├── layouts/
+│ ├── listings/
+│ ├── users/
+│ └── partials/
 │
 ├── public/ # Static files
-│  ├── css/
-│  └── images/
+│ ├── css/
+│ └── images/
 │
 ├── app.js # Main application file
 ├── package.json
 └── README.md
-
 
 ### ⚙️ Installation & Setup
     - Prerequisites
