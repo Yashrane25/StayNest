@@ -1,8 +1,8 @@
 # StayNest 🏡
 
-StayNest is a property rental web application inspired by platforms like Airbnb, designed to help users list, discover, and rent residential properties with ease. The platform focuses on rental homes and apartments for working professionals, providing a clean UI, secure authentication, and smooth property management features.
+StayNest is a property rental web application inspired by platforms like Airbnb, designed to help users list, discover and rent residential properties with ease. The platform focuses on rental homes and apartments for working professionals, providing a clean UI, secure authentication and smooth property management features.
 
-StayNest is built as a full-stack web application using Node.js, Express, MongoDB, and EJS, following industry-level practices for authentication, authorization, and data handling.
+StayNest is built as a full-stack web application using Node.js, Express, MongoDB, and EJS, following industry-level practices for authentication, authorization and data handling.
 
 **Live Demo:** [Click here to view StayNest](https://staynest-ka3d.onrender.com/listings)
 
@@ -15,7 +15,7 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
     - Role-based access (Owner / User)
 
 ### 🏠 Property Listings
-    - Owners can create, edit, and delete property listings
+    - Owners can create, edit and delete property listings
     - Listings include:
         - Property title & description
         - Monthly rent price
@@ -46,7 +46,7 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
     🎨 User Interface
     - Server-side rendering using EJS templates
     - Responsive layout for better usability
-    - Simple, clean, and professional UI
+    - Simple, clean and professional UI
 
 ### 🛠️ Tech Stack
 
@@ -74,7 +74,7 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
 
 ### Steps to Run Locally
     1. Clone the repository
-    git clone YOUR_GITHUB_REPO_LINK
+    git clone https://github.com/Yashrane25/StayNest.git
     cd StayNest
 
     2. Install dependencies
