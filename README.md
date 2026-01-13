@@ -93,7 +93,7 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
     - Session based authentication
 
 ### 👨‍💻 Author
-Yash Rane
+Yash Rane 
 Computer Science & Engineering Student
 Aspiring Software Developer
 
