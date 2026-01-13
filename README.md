@@ -40,3 +40,93 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
        - Listings
        - Reviews
     - Clean data relationships using references
+
+    🎨 User Interface
+    - Server-side rendering using EJS templates
+    - Responsive layout for better usability
+    - Simple, clean, and professional UI
+
+### 🛠️ Tech Stack
+
+#### Frontend
+    - EJS (Embedded JavaScript Templates)
+    - HTML5
+    - CSS3
+    - Bootstrap (for responsive design)
+#### Backend
+    - Node.js
+    - Express.js
+#### Database
+    - MongoDB Atlas
+    - MongoDB 
+#### Authentication & Security
+    - Passport.js
+    - Express-session
+    - Password hashing
+
+### 📁 Project Structure
+
+StayNest/
+│
+├── init/ # Database initialization & seed data
+│ ├── data.js
+│ └── index.js
+│
+├── models/ # Mongoose schemas
+│ ├── listing.js
+│ ├── review.js
+│ └── user.js
+│
+├── routes/ # Express routes
+│ ├── listings.js
+│ ├── reviews.js
+│ └── users.js
+│
+├── views/ # EJS templates
+│ ├── layouts/
+│ ├── listings/
+│ ├── users/
+│ └── partials/
+│
+├── public/ # Static files
+│ ├── css/
+│ └── images/
+│
+├── app.js # Main application file
+├── package.json
+└── README.md
+
+### ⚙️ Installation & Setup
+    - Prerequisites
+       - Node.js (v16+ recommended)
+       - MongoDB Atlas account or local MongoDB
+       - Git
+
+### Steps to Run Locally
+    1. Clone the repository
+    git clone YOUR_GITHUB_REPO_LINK
+    cd StayNest
+
+    2. Install dependencies
+    npm install
+
+    3. Run the application
+    node app.js
+
+    4. Open in browser
+    http://localhost:8080/Listings
+
+### 🔒 Security Practices
+    - Passwords stored using hashing
+    - Protected routes using middleware
+    - Users can only modify their own data
+    - Session based authentication
+
+### 👨‍💻 Author
+Yash Rane
+Computer Science & Engineering Student
+Aspiring Software Developer
+
+
+This project is for educational and learning purposes.
+   
