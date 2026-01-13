@@ -2,29 +2,29 @@
 
 StayNest is a property rental web application inspired by platforms like Airbnb, designed to help users list, discover and rent residential properties with ease. The platform focuses on rental homes and apartments for working professionals, providing a clean UI, secure authentication and smooth property management features.
 
-StayNest is built as a full-stack web application using Node.js, Express, MongoDB, and EJS, following industry-level practices for authentication, authorization and data handling.
+StayNest is built as a full-stack web application using Node.js, Express, MongoDB, and EJS, following industry level practices for authentication, authorization and data handling.
 
 **Live Demo:** [Click here to view StayNest](https://staynest-ka3d.onrender.com/listings)
 
 ## 🚀 Features
 
-### 🔐 Authentication & Authorization
-    - User Sign Up & Login using secure authentication
+### 🔐 Authentication and Authorization
+    - User Sign Up and Login using secure authentication
     - Authentication handled using Passport.js
-    - Session-based login with protected routes
+    - Session based login with protected routes
     - Role-based access (Owner / User)
 
 ### 🏠 Property Listings
     - Owners can create, edit and delete property listings
     - Listings include:
-        - Property title & description
+        - Property title and description
         - Monthly rent price
         - Security deposit
         - Property images (multiple)
         - Owner contact details
     - Support for different property types:
     
-    ⭐ Reviews & Ratings
+    ⭐ Reviews and Ratings
     - Authenticated users can:
        - Add reviews to listings
        - Rate properties
@@ -35,7 +35,7 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
     - Property owners can manage their listings
     - Secure access to edit/delete only owned properties
 
-    📦 Database & Data Handling
+    📦 Database and Data Handling
     - MongoDB Atlas used as the cloud database
     - Mongoose schemas for:
        - Users
@@ -61,12 +61,12 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
 #### Database
     - MongoDB Atlas
     - MongoDB 
-#### Authentication & Security
+#### Authentication and Security
     - Passport.js
     - Express-session
     - Password hashing
 
-### ⚙️ Installation & Setup
+### ⚙️ Installation and Setup
     - Prerequisites
        - Node.js (v16+ recommended)
        - MongoDB Atlas account or local MongoDB
@@ -94,7 +94,7 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
 
 ### 👨‍💻 Author
 Yash Rane<br>
-Computer Science & Engineering Student<br>
+Computer Science and Engineering Student<br>
 Aspiring Software Developer
 
 <br>
