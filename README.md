@@ -71,8 +71,9 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
        - Node.js (v16+ recommended)
        - MongoDB Atlas account or local MongoDB
        - Git
-
-### Steps to Run Locally
+       - Docker Desktop (if using Docker)
+       
+### Steps to Run Locally (Without Docker)
     1. Clone the repository
     git clone https://github.com/Yashrane25/StayNest.git
     cd StayNest
