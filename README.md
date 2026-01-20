@@ -97,9 +97,3 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
 Yash Rane<br>
 Computer Science and Engineering Student<br>
 Aspiring Software Developer
-
-<br>
-<br>
-<br>
-This project is for educational and learning purposes.
-   
