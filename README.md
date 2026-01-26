@@ -12,7 +12,8 @@ StayNest is built as a full-stack web application using Node.js, Express, MongoD
     - User Sign Up and Login using secure authentication
     - Authentication handled using Passport.js
     - Session based login with protected routes
-    - Role-based access (Owner / User)
+    - Role based access (Owner / User)
+    - Forgot Password feature with email based reset
 
 ### 🏠 Property Listings
     - Owners can create, edit and delete property listings
