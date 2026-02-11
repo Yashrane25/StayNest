@@ -2,7 +2,7 @@
 
 StayNest is a property rental web application inspired by platforms, designed to help users list, discover and rent residential properties with ease. The platform focuses on rental homes and apartments for working professionals, providing a clean UI, secure authentication and smooth property management features.
 
-StayNest is built as a full stack web application using Node.js, Express, MongoDB, and EJS, following industry level practices for authentication, authorization and data handling.
+StayNest is built as a full stack web application using Node.js, Express, MongoDB and EJS, following industry level practices for authentication, authorization and data handling.
 
 **Live Demo:** [Click here to view StayNest](https://staynest-ka3d.onrender.com/listings)
 
