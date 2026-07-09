@@ -5,7 +5,6 @@
 [![Node.js](https://img.shields.io/badge/Node.js-18-339933?style=flat-square&logo=nodedotjs)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express.js-4-000000?style=flat-square&logo=express)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat-square&logo=mongodb)](https://www.mongodb.com/)
-[![EJS](https://img.shields.io/badge/EJS-Templates-B4CA65?style=flat-square&logo=ejs)](https://ejs.co/)
 [![Passport.js](https://img.shields.io/badge/Passport.js-Auth-34E27A?style=flat-square&logo=passport)](https://www.passportjs.org/)
 
 **A property rental web app for listing, discovering, and renting residential homes.**
@@ -18,7 +17,7 @@ Secure authentication · Owner-managed listings · Reviews and ratings · Clean,
 
 ---
 
-StayNest is a full stack property rental web application inspired by platforms like Airbnb. It's built to help users list, discover and rent residential properties with ease, with a focus on rental homes and apartments for working professionals.
+StayNest is a full stack property rental web application. It's built to help users list, discover and rent residential properties with ease, with a focus on rental homes and apartments for working professionals.
 
 This project was built to demonstrate solid full-stack engineering practices including session-based authentication with Passport.js, role-based authorization, Mongoose data modeling with clean referencing between users, listings and reviews and secure ownership-scoped CRUD operations.
 
@@ -26,7 +25,7 @@ This project was built to demonstrate solid full-stack engineering practices inc
 
 ## Features
 
-### 👤 User
+### User
 
 - Register and log in with secure, session-based authentication
 - Browse and search property listings
@@ -35,7 +34,7 @@ This project was built to demonstrate solid full-stack engineering practices inc
 - Delete their own reviews
 - Reset forgotten password via email
 
-### 🏠 Property Owner
+### Property Owner
 
 - Register and manage multiple property listings
 - Create, edit, and delete listings with:
@@ -47,7 +46,7 @@ This project was built to demonstrate solid full-stack engineering practices inc
 - Support for different property types (apartment, house, PG, etc.)
 - Edit/delete access restricted to owned listings only
 
-### 🔐 Authentication & Authorization
+### Authentication & Authorization
 
 - Passport.js local strategy for login/signup
 - Protected routes via custom middleware
@@ -56,7 +55,7 @@ This project was built to demonstrate solid full-stack engineering practices inc
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend
 | Technology | Purpose |
@@ -128,34 +127,32 @@ EMAIL_USER=your_email_address
 EMAIL_PASS=your_email_app_password
 ```
 
-> ⚠️ Never commit your `.env` file to version control. Ensure it is listed in `.gitignore`.
-
 ---
 
 ## Running Locally
 
-### Step 1 — Clone the repository
+### Step 1 - Clone the repository
 
 ```bash
 git clone https://github.com/Yashrane25/StayNest.git
 cd StayNest
 ```
 
-### Step 2 — Install dependencies
+### Step 2 - Install dependencies
 
 ```bash
 npm install
 ```
 
-### Step 3 — Set up MongoDB Atlas
+### Step 3 - Set up MongoDB Atlas
 
 Create a free MongoDB Atlas cluster, configure a database user and network access, then copy your connection string into `ATLASDB_URL` in `.env`.
 
-### Step 4 — Set up Cloudinary
+### Step 4 - Set up Cloudinary
 
 Create a free Cloudinary account and copy your cloud name, API key, and API secret into `.env`.
 
-### Step 5 — Start the server
+### Step 5 - Start the server
 
 ```bash
 node app.js
@@ -167,7 +164,7 @@ For auto-restart during development:
 npx nodemon app.js
 ```
 
-### Step 6 — Open in browser
+### Step 6 - Open in browser
 
 ```
 http://localhost:8080/listings
@@ -175,7 +172,7 @@ http://localhost:8080/listings
 
 ---
 
-## 🔒 Security Practices
+## Security Practices
 
 - Passwords stored using bcrypt hashing (never in plain text)
 - Protected routes secured with custom auth middleware
@@ -185,7 +182,7 @@ http://localhost:8080/listings
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 StayNest/
