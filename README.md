@@ -29,7 +29,7 @@ This project was built to demonstrate solid full-stack engineering practices inc
 
 - Register and log in with secure, session-based authentication
 - Browse and search property listings
-- View listing details, images, and owner contact info
+- View listing details, images and owner contact info
 - Add reviews and star ratings to listings
 - Delete their own reviews
 - Reset forgotten password via email
@@ -80,7 +80,7 @@ This project was built to demonstrate solid full-stack engineering practices inc
 |---|---|
 | MongoDB Atlas | Primary cloud database |
 | Cloudinary | Image storage for listing photos |
-| Nodemailer (or similar) | Email-based password reset |
+| Nodemailer | Email-based password reset |
 
 ---
 
