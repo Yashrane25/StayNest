@@ -7,7 +7,7 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat-square&logo=mongodb)](https://www.mongodb.com/)
 [![Passport.js](https://img.shields.io/badge/Passport.js-Auth-34E27A?style=flat-square&logo=passport)](https://www.passportjs.org/)
 
-**A property rental web app for listing, discovering, and renting residential homes.**
+**A full-stack rental housing platform for discovering and managing long term residential accommodations.**
 
 Secure authentication · Owner-managed listings · Reviews and ratings · Clean, responsive UI
 
@@ -17,7 +17,7 @@ Secure authentication · Owner-managed listings · Reviews and ratings · Clean,
 
 ---
 
-StayNest is a full stack property rental web application. It's built to help users list, discover and rent residential properties with ease, with a focus on rental homes and apartments for working professionals.
+StayNest is a full-stack rental housing platform that enables working professionals and students to discover, explore and rent apartments and accommodations through a secure and intuitive web application.
 
 This project was built to demonstrate solid full-stack engineering practices including session-based authentication with Passport.js, role-based authorization, Mongoose data modeling with clean referencing between users, listings and reviews and secure ownership-scoped CRUD operations.
 
