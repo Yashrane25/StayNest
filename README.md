@@ -12,7 +12,7 @@
 
 Secure authentication · Owner-managed listings · Reviews and ratings · Clean, responsive UI
 
-**🔗 Live Demo:** [staynest-ka3d.onrender.com/listings](https://staynest-ka3d.onrender.com/listings)
+**🔗 Live Demo:** [staynest](https://staynest-ka3d.onrender.com/listings)
 
 </div>
 
