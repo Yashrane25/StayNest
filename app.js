@@ -1,9 +1,8 @@
-// Loading environment variables from .env file in non-production environments.
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
 
-/* Importing required modules: Express for server, Mongoose for DB, Listing model, Path for file       handling, Method-Override for supporting PUT/DELETE in forms, and EJS-Mate for layouts/partials in templates. */
+/* Importing required modules: Express for server, Mongoose for DB, Listing model, Path for file      handling, Method-Override for supporting PUT/DELETE in forms, and EJS-Mate for layouts/partials in templates. */
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
